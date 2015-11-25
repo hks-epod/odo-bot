@@ -1,7 +1,7 @@
 odo-bot
 =======
 
-November 2015. A bot, written in Python, for our Slack channels, to amuse, inform and encourage us. Based on [Odo](https://en.wikipedia.org/wiki/Odo_%28Star_Trek%29), from Star Trek: Deep Space Nine.
+November 2015. A bot, written in Python, for our Slack channels, to amuse, inform and encourage us. Based on [Odo](https://en.wikipedia.org/wiki/Odo_%28Star_Trek%29), from Star Trek: Deep Space Nine. 
 
 ## Resources
 * [Heroku: Getting started with deploying a Python app](https://devcenter.heroku.com/articles/getting-started-with-python#introduction)
@@ -26,4 +26,6 @@ November 2015. A bot, written in Python, for our Slack channels, to amuse, infor
 12. Where to get Odo quotes?
 13. Fix Odo's boring/dark picture to something more lively.
 14. How to do .config file stuff in Heroku? [This stuff](https://devcenter.heroku.com/articles/getting-started-with-python#define-config-vars)... 
+  To run locally: `odo_secret.json`
+  To run on Heroku: `os.env.get()`
 15. ~~`odo report`: Only active users to get randomly chosen.~~
