@@ -8,13 +8,18 @@ import random
 import urllib2
 import urllib
 from unidecode import unidecode
+import os
 
 
 # Loading passwords, keys
-with open("odo_secrets.json") as f:
-	secrets = json.load(f)
-	TOKEN = secrets['slack-token']
-	GOOGLE = secrets['google-places-api-key']
+if "odo_secrets.json" in os.getcwd():
+	with open("odo_secrets.json") as f:
+		secrets = json.load(f)
+		TOKEN = secrets['slack-token']
+		GOOGLE = secrets['google-places-api-key']
+else:
+	TOKEN = os.environ.get('slack-token')
+	GOOGLE = os.environ.get('google-places-api-key')
 
 # Random stuff I need
 LAT, LONG = 42.371344, -71.122691
