@@ -1,0 +1,2 @@
+slackclient==0.16
+Unidecode==0.4.18
