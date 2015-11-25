@@ -26,6 +26,6 @@ November 2015. A bot, written in Python, for our Slack channels, to amuse, infor
 12. Where to get Odo quotes?
 13. Fix Odo's boring/dark picture to something more lively.
 14. How to do .config file stuff in Heroku? [This stuff](https://devcenter.heroku.com/articles/getting-started-with-python#define-config-vars)... 
-  To run locally: `odo_secret.json`
-  To run on Heroku: `os.env.get()`
+  * To run locally: `odo_secret.json`
+  * To run on Heroku: `os.env.get()`
 15. ~~`odo report`: Only active users to get randomly chosen.~~
