@@ -145,6 +145,15 @@ I will be investigating this shortly."
 
 	sc.api_call("chat.postMessage", channel=event['channel'], text=CRIMELOG, as_user=True)
 
+def RandomQuote(event):
+	"""
+	A function to provide amusement.
+	Pulls from a random list of quotes.
+	"""
+
+	QUOTE = random.choice(QUOTES)
+
+	sc.api_call("chat.postMessage", channel=event['channel'], text=QUOTE, as_user=True)
 
 def NYT(event):
 	nyt = "http://api.nytimes.com/svc/topstories/v1/world.json?api-key=" + NYT_KEY
@@ -231,6 +240,7 @@ def HelloSolid(events):
 	odo food
 	odo inspire
 	odo who
+	odo quote
 	odo report
 	odo nyt
 	-- and launches the appropriate function, or simply replies with text.
@@ -241,7 +251,8 @@ def HelloSolid(events):
 *odo food _search term(s)_* Quark's Bar has been closed due to failing hygiene standards. \
 I can suggest alternatives. \n\
 *odo nyt* I will report the latest world headlines. \n\
-*odo who* If you are confused or alarmed about my presence.\n\n \
+*odo who* If you are confused or alarmed about my presence.\n\
+*odo quote* The reason for this exercise is beyond my comprehension, except perhaps that Humans have a compulsion to keep records and lists and files.\n\n \
 I have been sent here by your superiors to promote law and order."
 
 	whoami = "I am commonly called Odo. Until recently, I was the Chief of Security on \
@@ -269,6 +280,9 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 
 				elif "odo nyt" in event['text'].lower() and event['user'] != odo_id:
 					NYT(event)
+
+				elif "odo quote" in event['text'].lower() and event['user'] != odo_id:
+					RandomQuote(event)
 				
 				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
