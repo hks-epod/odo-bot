@@ -50,6 +50,39 @@ CRIMES = ["loitering without a purpose",
 			"refining the holograph principle sans license",
 			"harassing local aquatic life"]
 
+QUOTES = [
+	"I don't eat! This is not a real mouth. It is an approximation of one. I do not have an esophagus or a stomach or a digestive system. I am not like you. Every sixteen hours I turn into a liquid.",
+	"I may be Romeo in the holosuite, but I know the first time I see the real Kira, I'll turn back into Nanook of the North.",
+	"How much damage would it do to the timeline if Quark were to suffer a mysterious \"accident\"?",
+	"There's been a temporal displacement of some kind. We don't belong in this time. We are from the future!",
+	"That... Croden... is an interesting character.",
+	"I need to get to docking port V now. That ship's gonna explode in five minutes!",
+	"Humanoid death rituals are an interest of mine.",
+	"You know, if I were still a Changeling, I could've shapeshifted into a Vorian pterodactyl and flown that damn transmitter to the top of the mountain hours ago.",
+	"Nothing happened to my face; I'm a shapeshifter. I just don't do faces very well.",
+	"The only ones who can help me now... are the Founders.",
+	"I'm trapped inside this body. I can never rejoin the Great Link. My job is the only thing I have left.",
+	"Every time Klingons visit the station, I wind up with a Klingon afternoon.",
+	"Welcome back. You're under arrest.",
+	"You humanoids - when it comes to emotional attachments, you never see the obvious.",
+	"Am I the only one who's worried that there are still Changelings here on Earth?",
+	"Pretense. There's a special talent to it. It's as hard for me as creating one of your noses.",
+	"Did I ever mention you're a magnificent scoundrel?",
+	"From what I hear, Risa makes the Hoobishan Baths look like a monastery.",
+	"The Omarion Nebula!",
+	"I'd say your brother's doing well, Commander. He's been on the job six hours, he's only killed four Boslics so far.",
+	"I don't like Quark either. But I can't let you kill him.",
+	"I'm sorry. I don't dance.",
+	"No player shall at any time make contact with the umpire in any manner. The prescribed penalty for the violation is immediate ejection from the game. Rule Number 4.06, subsection a, paragraph four. Look it up, but do it in the stands. You're GONE!",
+	"So much for 'Quarktajino'.",
+	"What do you mean, \"uh-oh\"? We don't have time for \"uh-oh\".",
+	"Why waste my time? Romance is for solids.",
+	"Tell me, do they still sing songs of the Great Tribble Hunt?",
+	"I read 20th century crime novels - Raymond Chandler, Mike Hammer, that sort of thing.",
+	"Survivors of Gallitep. They arrived early this morning. I suppose they are waiting for justice.",
+	"No jokes. That's my Rule of Obedience number 14."
+]
+
 # Slack info I need
 sc = SlackClient(TOKEN)
 who = json.loads(sc.api_call("users.list"))['members']
