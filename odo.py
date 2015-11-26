@@ -207,6 +207,7 @@ def HelloSolid(events):
 *odo inspire* I can provide random items to motivate and inspire. \n \
 *odo food _search term(s)_* Quark's Bar has been closed due to failing hygiene standards. \
 I can suggest alternatives. \n\
+*odo nyt* I will report the latest world headlines. \n\
 *odo who* If you are confused or alarmed about my presence.\n\n \
 I have been sent here by your superiors to promote law and order."
 
