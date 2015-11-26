@@ -121,7 +121,7 @@ def NYT(event):
 	if 'results' in data:
 		data = data['results']
 		news = "The top five news stories are: \n"
-		for item in data[:4]:
+		for item in data[:5]:
 			news = news + str(unidecode(item['title'])) + " \n"
 			news = news + item['url'] + " \n"
 	else:
