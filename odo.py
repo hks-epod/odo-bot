@@ -122,7 +122,7 @@ def NYT(event):
 		data = data['results']
 		news = "The top five news stories are: \n"
 		for item in data:
-			news = news + str(item['title']) + " \n"
+			news = news + unidecode(str(item['title'])) + " \n"
 			news = news + item['url'] + " \n"
 	else:
 		news = "Nothing of interest is happening in the world right now. Get back to work!"
