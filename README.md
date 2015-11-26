@@ -25,7 +25,7 @@ November 2015. A bot, written in Python, for our Slack channels, to amuse, infor
 9. At least one reference to the bucket.
 10. Docstrings on all the funcs. Make them more serious/real.
 11. `odo dj`: Some integration with Spotify?
-~~12. Where to get Odo quotes?~~
+12. ~~Where to get Odo quotes?~~
 13. Fix Odo's boring/dark picture to something more lively.
 14. ~~How to do .config file stuff in Heroku? [This stuff](https://devcenter.heroku.com/articles/getting-started-with-python#define-config-vars)...~~
   * ~~To run locally: `odo_secret.json`~~
