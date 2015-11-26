@@ -17,9 +17,11 @@ if "odo_secrets.json" in os.getcwd():
 		secrets = json.load(f)
 		TOKEN = secrets['slack-token']
 		GOOGLE = secrets['google-places-api-key']
+		NYT_KEY = secrets['nyt-api-key']
 else:
 	TOKEN = os.environ.get('slack-token')
 	GOOGLE = os.environ.get('google-places-api-key')
+	NYT_KEY = os.environ.get('nyt-api-key')
 
 # Random stuff I need
 LAT, LONG = 42.371344, -71.122691
@@ -111,6 +113,23 @@ I will be investigating this shortly."
 	sc.api_call("chat.postMessage", channel=event['channel'], text=CRIMELOG, as_user=True)
 
 
+def NYT(event):
+	nyt = "http://api.nytimes.com/svc/topstories/v1/world.json?api-key=" + NYT_KEY
+	data = urllib.urlopen(nyt).read()
+	data = json.loads(data)
+	
+	if 'results' in data:
+		data = data['results']
+		news = "The top five news stories are: \n"
+		for item in data:
+			news = news + str(item['title']) + " \n"
+			news = news + item['url'] + " \n"
+	else:
+		news = "Nothing of interest is happening in the world right now. Get back to work!"
+
+	sc.api_call("chat.postMessage", channel=event['channel'], text=news, as_user=True)
+
+
 def LunchQuery(event):
 	"""
 	A useful function. Takes input "odo lunch [search terms]". Searches the Google Places API
@@ -119,7 +138,10 @@ def LunchQuery(event):
 	"""
 
 	words = event['text'].split()
-	words = words[2:]
+
+	# Don't use "odo" and "food" as search terms
+	if "odo" in words: words.remove("odo")
+	if "food" in words: words.remove("food")
 
 	laziness = 200
 
@@ -177,12 +199,14 @@ def HelloSolid(events):
 	odo inspire
 	odo who
 	odo report
+	odo nyt
 	-- and launches the appropriate function, or simply replies with text.
 	"""
 
 	welcome = "Greetings, monoform. How can I assist? \n*odo report* To report a disturbance. \n \
 *odo inspire* I can provide random items to motivate and inspire. \n \
-*odo food _search term(s)_* Quark's Bar has been closed due to failing hygiene standards. I can suggest alternatives. \n\
+*odo food _search term(s)_* Quark's Bar has been closed due to failing hygiene standards. \
+I can suggest alternatives. \n\
 *odo who* If you are confused or alarmed about my presence.\n\n \
 I have been sent here by your superiors to promote law and order."
 
@@ -197,26 +221,28 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 	else:
 		for event in events:
 			if 'text' in event:
-				if "odo food" in event['text'] and event['user'] != odo_id:
+				if "odo food" in event['text'].lower() and event['user'] != odo_id:
 					LunchQuery(event)
 				
-				elif "odo report" in event['text'] and event['user'] != odo_id:
+				elif "odo report" in event['text'].lower() and event['user'] != odo_id:
 					CrimeReport(event)
 				
-				elif "odo who" in event['text'] and event['user'] != odo_id:
+				elif "odo who" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=whoami, as_user=True)
 
-				elif "odo inspire" in event['text'] and event['user'] != odo_id:
+				elif "odo inspire" in event['text'].lower() and event['user'] != odo_id:
 					Inspiration(event)
+
+				elif "odo nyt" in event['text'].lower() and event['user'] != odo_id:
+					NYT(event)
 				
-				elif "odo" in event['text'] and event['user'] != odo_id:
+				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
 				pass
 
 
 # TODO: Should Odo join all the channels? Or should we manually add him?
-
 # for channel in channels:
 # 	print channel['name']
 # 	sc.api_call("channel.join", name = channel['name'])
