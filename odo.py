@@ -28,7 +28,9 @@ LAT, LONG = 42.371344, -71.122691
 pp = pprint.PrettyPrinter(indent=4)
 SUBREDDITS = ["museum", "ColorizedHistory", "HumanPorn", 
 				"historyporn", "RuralPorn", "MicroPorn",
-				"IncredibleIndia"]
+				"IncredibleIndia", "Creatures_of_earth", "PerfectTiming",
+				"fascinating", "AskHistorians"]
+
 CRIMES = ["loitering without a purpose",
 			"doodling",
 			"attempting to impersonate an officer/PI/religious prophet",
@@ -156,6 +158,17 @@ def RandomQuote(event):
 	sc.api_call("chat.postMessage", channel=event['channel'], text=QUOTE, as_user=True)
 
 def NYT(event):
+	"""
+	A function to inform. Pulls the top 5 world headlines from the New York Times.
+	Should probably be expanded to other media platforms: e.g. 
+	Al Jazeera
+	Guardian
+	WaPo
+	Slate
+	Hacker news
+	what else?
+	And then should probably be renamed entirely ("odo nyt" --> "odo news").
+	"""
 	nyt = "http://api.nytimes.com/svc/topstories/v1/world.json?api-key=" + NYT_KEY
 	data = urllib.urlopen(nyt).read()
 	data = json.loads(data)
@@ -174,7 +187,7 @@ def NYT(event):
 
 def LunchQuery(event):
 	"""
-	A useful function. Takes input "odo lunch [search terms]". Searches the Google Places API
+	A useful function. Takes input "odo food [search terms]". Searches the Google Places API
 	for those terms. Returns highly-rated places (>4/5 stars) within 200m, and sometimes beyond.
 	Returns only places that are open.
 	"""
@@ -262,7 +275,7 @@ https://en.wikipedia.org/wiki/Odo_%28Star_Trek%29#Overview \n \
 If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 
 	if not events:
-		pass
+		continue
 	else:
 		for event in events:
 			if 'text' in event:
@@ -287,7 +300,7 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
-				pass
+				continue
 
 
 # TODO: Should Odo join all the channels? Or should we manually add him?
