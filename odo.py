@@ -275,7 +275,7 @@ https://en.wikipedia.org/wiki/Odo_%28Star_Trek%29#Overview \n \
 If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 
 	if not events:
-		continue
+		pass
 	else:
 		for event in events:
 			if 'text' in event:
@@ -300,7 +300,7 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
-				continue
+				pass
 
 
 # TODO: Should Odo join all the channels? Or should we manually add him?
