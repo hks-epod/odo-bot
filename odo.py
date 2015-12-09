@@ -26,7 +26,7 @@ else:
 # Random stuff I need
 LAT, LONG = 42.371344, -71.122691
 pp = pprint.PrettyPrinter(indent=4)
-SUBREDDITS = ["museum", "ColorizedHistory", "HumanPorn", 
+SUBREDDITS = ["museum", "ColorizedHistory", "HumanPorn",
 				"historyporn", "RuralPorn", "MicroPorn",
 				"IncredibleIndia", "Creatures_of_earth", "PerfectTiming",
 				"fascinating", "AskHistorians"]
@@ -107,7 +107,7 @@ for user in who:
 # Functions
 def Inspiration(event):
 	"""
-	A function to provide amusement and inspiration. 
+	A function to provide amusement and inspiration.
 	For now, pulls from Reddit's API and pulls a random top-rated post/image/URL.
 	"""
 
@@ -117,12 +117,12 @@ def Inspiration(event):
 
 	data = urllib.urlopen(reddit + "/r/" + sub + limits).read()
 	data = json.loads(data)
-	
+
 	if 'data' in data:
 		data = data['data']['children'][0]['data']
-		inspire = "Try this: \n " + reddit + data['permalink']	
-	else:		
-		inspire = "I have no inspiration for you now." 
+		inspire = "Try this: \n " + reddit + data['permalink']
+	else:
+		inspire = "I have no inspiration for you now."
 
 	sc.api_call("chat.postMessage", channel=event['channel'], text=inspire, as_user=True)
 
@@ -160,7 +160,7 @@ def RandomQuote(event):
 def NYT(event):
 	"""
 	A function to inform. Pulls the top 5 world headlines from the New York Times.
-	Should probably be expanded to other media platforms: e.g. 
+	Should probably be expanded to other media platforms: e.g.
 	Al Jazeera
 	Guardian
 	WaPo
@@ -172,7 +172,7 @@ def NYT(event):
 	nyt = "http://api.nytimes.com/svc/topstories/v1/world.json?api-key=" + NYT_KEY
 	data = urllib.urlopen(nyt).read()
 	data = json.loads(data)
-	
+
 	if 'results' in data:
 		data = data['results']
 		news = "The top five news stories are: \n"
@@ -201,7 +201,7 @@ def LunchQuery(event):
 	laziness = 200
 
 	base = "https://maps.googleapis.com/maps/api/place/textsearch/json?"
-	location = "location="+ `LAT` + "," + `LONG` 
+	location = "location="+ `LAT` + "," + `LONG`
 	distance = "&radius=" + `laziness`
 	food = "&types=food"
 	query = "&query="
@@ -227,7 +227,7 @@ def LunchQuery(event):
 			if 'opening_hours' in place and place['opening_hours']['open_now'] == False:
 				continue
 			else:
-				anyopen = 1	
+				anyopen = 1
 				lunch = lunch + unidecode(place['name']) + " (" + `place['rating']` + "/5) \n"
 				lunchlat = place['geometry']['location']['lat']
 				lunchlong = place['geometry']['location']['lng']
@@ -281,10 +281,10 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 			if 'text' in event:
 				if "odo food" in event['text'].lower() and event['user'] != odo_id:
 					LunchQuery(event)
-				
+
 				elif "odo report" in event['text'].lower() and event['user'] != odo_id:
 					CrimeReport(event)
-				
+
 				elif "odo who" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=whoami, as_user=True)
 
@@ -296,7 +296,7 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 
 				elif "odo quote" in event['text'].lower() and event['user'] != odo_id:
 					RandomQuote(event)
-				
+
 				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
