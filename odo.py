@@ -9,6 +9,7 @@ import urllib2
 import urllib
 from unidecode import unidecode
 import os
+from stardate import Stardate
 
 
 # Loading passwords, keys
@@ -140,7 +141,9 @@ def CrimeReport(event):
 	crimescene = random.choice(channels)
 	crime = random.choice(CRIMES)
 
-	CRIMELOG = "Commence station security log, stardate " + `time.time()` + " - I have received reports that \
+  stardate = Stardate().toTngStardate()
+
+	CRIMELOG = "Commence station security log, stardate " + `stardate` + " - I have received reports that \
 " + suspect['real_name'] + ", alias @" + suspect['name'] + ", was \
 found " + crime + " in #" + crimescene['name'] + ". \
 I will be investigating this shortly."
