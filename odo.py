@@ -141,7 +141,7 @@ def CrimeReport(event):
 	crimescene = random.choice(channels)
 	crime = random.choice(CRIMES)
 
-  stardate = Stardate().toTngStardate()
+	stardate = Stardate().toTngStardate()
 
 	CRIMELOG = "Commence station security log, stardate " + `stardate` + " - I have received reports that \
 " + suspect['real_name'] + ", alias @" + suspect['name'] + ", was \
