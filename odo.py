@@ -269,7 +269,7 @@ I can suggest alternatives. \n\
 I have been sent here by your superiors to promote law and order."
 
 	whoami = "I am commonly called Odo. Until recently, I was the Chief of Security on \
-Deep Space Nine, a space station in the Gamma Quadrant. I am a Changeling. \
+Deep Space Nine, a space station in the Alpha Quadrant. I am a Changeling. \
 If you wish to learn more, you may read a short biography here: \
 https://en.wikipedia.org/wiki/Odo_%28Star_Trek%29#Overview \n \
 If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
