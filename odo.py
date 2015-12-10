@@ -26,10 +26,10 @@ else:
 # Random stuff I need
 LAT, LONG = 42.371344, -71.122691
 pp = pprint.PrettyPrinter(indent=4)
-SUBREDDITS = ["museum", "ColorizedHistory", "HumanPorn", 
+SUBREDDITS = ["museum", "ColorizedHistory", "HumanPorn",
 				"historyporn", "RuralPorn", "MicroPorn",
 				"IncredibleIndia", "Creatures_of_earth", "PerfectTiming",
-				"fascinating", "AskHistorians"]
+				"fascinating", "AskHistorians", "datascience", "dataisbeautiful"]
 
 CRIMES = ["loitering without a purpose",
 			"doodling",
