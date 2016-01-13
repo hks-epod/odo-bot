@@ -282,25 +282,25 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 	else:
 		for event in events:
 			if 'text' in event:
-				if " odo food" in event['text'].lower() and event['user'] != odo_id:
+				if "odo food" in event['text'].lower() and event['user'] != odo_id:
 					LunchQuery(event)
 
-				elif " odo report" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo report" in event['text'].lower() and event['user'] != odo_id:
 					CrimeReport(event)
 
-				elif " odo who" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo who" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=whoami, as_user=True)
 
-				elif " odo inspire" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo inspire" in event['text'].lower() and event['user'] != odo_id:
 					Inspiration(event)
 
-				elif " odo nyt" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo nyt" in event['text'].lower() and event['user'] != odo_id:
 					NYT(event)
 
-				elif " odo quote" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo quote" in event['text'].lower() and event['user'] != odo_id:
 					RandomQuote(event)
 
-				elif " odo " in event['text'].lower() and event['user'] != odo_id:
+				elif "odo" in event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
 				pass
