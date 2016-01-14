@@ -300,7 +300,7 @@ If you wish to hear me speak, you may watch this: https://youtu.be/anUUJo8tDy8"
 				elif "odo quote" in event['text'].lower() and event['user'] != odo_id:
 					RandomQuote(event)
 
-				elif "odo" in event['text'].lower() and event['user'] != odo_id:
+				elif "odo" == event['text'].lower() and event['user'] != odo_id:
 					sc.api_call("chat.postMessage", channel=event['channel'], text=welcome, as_user=True)
 			else:
 				pass
